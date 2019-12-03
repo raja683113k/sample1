@@ -14,7 +14,12 @@ http://www.mulesoft.org/schema/mule/wsc http://www.mulesoft.org/schema/mule/wsc/
 	<flow name="firstFlow" doc:id="633c35c5-0a92-4426-a2ba-f948c0d7b043" >
 		<http:listener doc:name="Listener" doc:id="3f3a51c8-d8dd-4f16-bd22-fcd607504a98" config-ref="HTTP_Listener_config" path="/unitedAll"/>
 		<logger level="INFO" doc:name="Request from" doc:id="2144c190-9e43-4581-8adc-f3a4ce40dd2c" message="request received from postman"/>
+		<flow-ref doc:name="Flow Reference" doc:id="ec339524-7199-422f-98d4-229d804e9b49" name="firstFlow1"/>
 		<http:request method="GET" doc:name="Request" doc:id="4acf1036-2575-4531-b499-c386c4a09a71" config-ref="HTTP_Request_configuration" path="/essentials/united/flights"/>
 		<logger level="INFO" doc:name="Logger" doc:id="e9b66b9c-0731-4855-9182-8d13715df358" message="requested from source.....#[payload]"/>
+	</flow>
+	<flow name="firstFlow1" doc:id="3c870759-e7d4-4981-8efe-6b893824ec93" >
+		<logger level="INFO" doc:name=" logger" doc:id="480848da-ff46-4129-8a45-b0f22741217a" message="request form main flow "/>
+		<set-payload value="unitedFlights  data....#[payload]" doc:name="Set Payload" doc:id="c1d7252e-7ab5-4b4e-8256-3ddd09a09daf" />
 	</flow>
 </mule>
